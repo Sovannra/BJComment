@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'BJComment_Example' do
+  pod 'BJComment', :path => '../'
+
+  target 'BJComment_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
