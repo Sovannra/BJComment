@@ -1,0 +1,6 @@
+framework module BJComment {
+  umbrella header "BJComment-umbrella.h"
+
+  export *
+  module * { export * }
+}

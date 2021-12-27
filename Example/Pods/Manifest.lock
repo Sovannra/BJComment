@@ -1,0 +1,16 @@
+PODS:
+  - BJComment (0.1.0)
+
+DEPENDENCIES:
+  - BJComment (from `../`)
+
+EXTERNAL SOURCES:
+  BJComment:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BJComment: d1146fe82380600734f9244c6981f855fc661cf2
+
+PODFILE CHECKSUM: baeeaec04df12ab3c2161eeed6a25ef03b9635fc
+
+COCOAPODS: 1.11.2
