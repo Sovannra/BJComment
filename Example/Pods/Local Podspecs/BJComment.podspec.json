@@ -1,7 +1,7 @@
 {
   "name": "BJComment",
   "version": "0.1.0",
-  "summary": "A short description of BJComment.",
+  "summary": "BJComment is a library to list comments.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/Sovannra/BJComment",
   "license": {
@@ -18,5 +18,12 @@
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "BJComment/Classes/**/*"
+  "swift_versions": "4.2",
+  "source_files": "BJComment/Classes/**/*",
+  "dependencies": {
+    "BJCollection": [
+
+    ]
+  },
+  "swift_version": "4.2"
 }

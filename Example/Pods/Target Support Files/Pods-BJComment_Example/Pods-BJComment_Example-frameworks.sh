@@ -176,9 +176,11 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BJCollection/BJCollection.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BJComment/BJComment.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BJCollection/BJCollection.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BJComment/BJComment.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049B8E1A277AA350006DFCCA /* CollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B8E19277AA350006DFCCA /* CollectionController.swift */; };
 		374FB835407F8E202A7DCA6B /* Pods_BJComment_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5430C17970037ADB61D1E330 /* Pods_BJComment_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		049B8E19277AA350006DFCCA /* CollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionController.swift; sourceTree = "<group>"; };
 		1DFDF6F3AD8E4FCF1ED4E030 /* BJComment.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BJComment.podspec; path = ../BJComment.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		412011D3ED7DE7264BDBD4B2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		42760964EA5F6BB89DB57C61 /* Pods_BJComment_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BJComment_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				049B8E19277AA350006DFCCA /* CollectionController.swift */,
 			);
 			name = "Example for BJComment";
 			path = BJComment;
@@ -212,10 +215,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2DK763H5M2;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2DK763H5M2;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -291,10 +296,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BJComment_Example/Pods-BJComment_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BJCollection/BJCollection.framework",
 				"${BUILT_PRODUCTS_DIR}/BJComment/BJComment.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BJCollection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BJComment.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				049B8E1A277AA350006DFCCA /* CollectionController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,6 +486,7 @@
 			baseConfigurationReference = B23CCB2217513DA5995BE8BF /* Pods-BJComment_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2DK763H5M2;
 				INFOPLIST_FILE = BJComment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -493,6 +502,7 @@
 			baseConfigurationReference = 4EFE253B9978DB157A34B1D3 /* Pods-BJComment_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2DK763H5M2;
 				INFOPLIST_FILE = BJComment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -507,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76E509FCF73ADCDE828D2D0F /* Pods-BJComment_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 2DK763H5M2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -529,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4355DC1F671F5CB6455F292 /* Pods-BJComment_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 2DK763H5M2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

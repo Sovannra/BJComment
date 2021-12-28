@@ -1,15 +1,22 @@
 PODS:
-  - BJComment (0.1.0)
+  - BJCollection (0.3.0)
+  - BJComment (0.1.0):
+    - BJCollection
 
 DEPENDENCIES:
   - BJComment (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - BJCollection
 
 EXTERNAL SOURCES:
   BJComment:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BJComment: d1146fe82380600734f9244c6981f855fc661cf2
+  BJCollection: b39c50b7503b4c4b6bbf0dd04ecf2e533ee9d460
+  BJComment: 9fee73b711303e73a80991f311c5ed16be3203d8
 
 PODFILE CHECKSUM: baeeaec04df12ab3c2161eeed6a25ef03b9635fc
 
