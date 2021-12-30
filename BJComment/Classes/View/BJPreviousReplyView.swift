@@ -12,8 +12,6 @@ public class BJPreviousReplyView: UIView {
     public let profileSize: CGFloat = 25
     public let fontSize: CGFloat = 13
     
-    fileprivate var usernameWidthConstraint: NSLayoutConstraint?
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
@@ -28,10 +26,10 @@ public class BJPreviousReplyView: UIView {
     private func setupComponent() {
         addSubview(vMainStackView)
         vMainStackView.addArrangedSubview(vViewReply)
-        vMainStackView.addArrangedSubview(vStackView)
-        vStackView.addArrangedSubview(vProfile)
-        vStackView.addArrangedSubview(vUsername)
-        vStackView.addArrangedSubview(vCaption)
+        vMainStackView.addArrangedSubview(vContainer)
+        vContainer.addSubview(vProfile)
+        vContainer.addSubview(vUsername)
+        vContainer.addSubview(vCaption)
     }
     
     private func setupConstraint() {
@@ -42,19 +40,20 @@ public class BJPreviousReplyView: UIView {
         vMainStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         //vProfile
+        vProfile.topAnchor.constraint(equalTo: vContainer.topAnchor).isActive = true
+        vProfile.leftAnchor.constraint(equalTo: vContainer.leftAnchor).isActive = true
+        vProfile.bottomAnchor.constraint(equalTo: vContainer.bottomAnchor).isActive = true
         vProfile.widthAnchor.constraint(equalToConstant: profileSize).isActive = true
         vProfile.heightAnchor.constraint(equalToConstant: profileSize).isActive = true
         
         //vUsername
-        usernameWidthConstraint = vUsername.widthAnchor.constraint(equalToConstant: 0)
-        usernameWidthConstraint?.isActive = true
+        vUsername.centerYAnchor.constraint(equalTo: vProfile.centerYAnchor).isActive = true
+        vUsername.leftAnchor.constraint(equalTo: vProfile.rightAnchor, constant: 6).isActive = true
         
-    }
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        let width = vUsername.intrinsicContentSize.width
-        usernameWidthConstraint?.constant = width
+        //vCaption
+        vCaption.centerYAnchor.constraint(equalTo: vUsername.centerYAnchor).isActive = true
+        vCaption.leftAnchor.constraint(equalTo: vUsername.rightAnchor, constant: 6).isActive = true
+        
     }
     
     lazy var vMainStackView: UIStackView = {
@@ -77,14 +76,9 @@ public class BJPreviousReplyView: UIView {
         return view
     }()
     
-    lazy var vStackView: UIStackView = {
-        let view = UIStackView()
+    lazy var vContainer: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.spacing = 4
-        view.distribution = .fillProportionally
-        view.axis = .horizontal
-        view.contentMode = .left
-        view.clipsToBounds = true
         return view
     }()
     
@@ -110,7 +104,7 @@ public class BJPreviousReplyView: UIView {
     }()
     
     lazy var vCaption: BJUILabel = {
-        let view = BJUILabel(padding: UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0))
+        let view = BJUILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "Hello"
         view.textAlignment = .left

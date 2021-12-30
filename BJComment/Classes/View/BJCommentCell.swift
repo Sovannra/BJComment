@@ -6,23 +6,18 @@
 //
 
 import UIKit
+import BJTextView
 
 public class BJCommentCell: UICollectionViewCell {
-    
-    var caption: String? {
-        didSet {
-            vCaption.text = caption
-            vCaption.isHidden = (caption == "")
-        }
-    }
-    
+        
     var data: BJCommentViewModel? {
         didSet {
             updateView()
         }
     }
+    var deleate: BJDelegate?
     
-    let profileSize: CGFloat = 30
+    let profileSize: CGFloat = 40
     let usernameFontSize: UIFont = .systemFont(ofSize: 14, weight: .semibold)
     let usernameTextColor: UIColor = .black
     let timeFontSize: UIFont = .systemFont(ofSize: 12)
@@ -31,8 +26,9 @@ public class BJCommentCell: UICollectionViewCell {
     let captionTextColor: UIColor = .black
     
     fileprivate var imageWidth: CGFloat {
-        return (UIScreen.main.bounds.width * 0.85) + 2
+        return (UIScreen.main.bounds.width * 0.83)
     }
+    fileprivate var imageHeight: CGFloat = 150
     
     lazy var width: NSLayoutConstraint = {
         let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
@@ -42,12 +38,14 @@ public class BJCommentCell: UICollectionViewCell {
     
     fileprivate var imageWidthConstraint: NSLayoutConstraint?
     fileprivate var imageHeightConstraint: NSLayoutConstraint?
+    fileprivate var imageBottomConstraint: NSLayoutConstraint?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
         setupComponent()
         setupConstraint()
+        setupAction()
     }
     
     required init?(coder: NSCoder) {
@@ -65,6 +63,7 @@ public class BJCommentCell: UICollectionViewCell {
         vStackView.addArrangedSubview(vUsername)
         vStackView.addArrangedSubview(vCaption)
         contentView.addSubview(vImage)
+        vImage.addSubview(vGifImage)
         vReplyConstainer.addSubview(vTime)
         vReplyConstainer.addSubview(vReply)
         contentView.addSubview(vReplyStackView)
@@ -87,12 +86,23 @@ public class BJCommentCell: UICollectionViewCell {
         //vImage
         vImage.topAnchor.constraint(equalTo: vStackView.bottomAnchor, constant: 4).isActive = true
         vImage.leftAnchor.constraint(equalTo: vStackView.leftAnchor).isActive = true
-//        vImage.widthAnchor.constraint(equalToConstant: imageWidth).isActive = true
-//        vImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
         imageWidthConstraint = vImage.widthAnchor.constraint(equalToConstant: 0)
         imageWidthConstraint?.isActive = true
         imageHeightConstraint = vImage.heightAnchor.constraint(equalToConstant: 0)
         imageHeightConstraint?.isActive = true
+        imageBottomConstraint = vImage.bottomAnchor.constraint(equalTo: vReplyStackView.topAnchor, constant: -4)
+        imageBottomConstraint?.priority = UILayoutPriority(90)
+        imageBottomConstraint?.isActive = true
+        
+        //vGifImage
+        vGifImage.topAnchor.constraint(equalTo: vImage.topAnchor).isActive = true
+        vGifImage.leftAnchor.constraint(equalTo: vImage.leftAnchor).isActive = true
+        vGifImage.rightAnchor.constraint(equalTo: vImage.rightAnchor).isActive = true
+        vGifImage.bottomAnchor.constraint(equalTo: vImage.bottomAnchor).isActive = true
+        
+        //vReplyStackView
+        vReplyStackView.leftAnchor.constraint(equalTo: vImage.leftAnchor).isActive = true
+        vReplyStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
         
         //vReplyContainer
         vReplyConstainer.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -108,11 +118,6 @@ public class BJCommentCell: UICollectionViewCell {
         vReply.widthAnchor.constraint(equalToConstant: 50).isActive = true
         vReply.bottomAnchor.constraint(equalTo: vReplyConstainer.bottomAnchor).isActive = true
         
-        //vReplyStackView
-        vReplyStackView.topAnchor.constraint(equalTo: vImage.bottomAnchor, constant: 4).isActive = true
-        vReplyStackView.leftAnchor.constraint(equalTo: vStackView.leftAnchor).isActive = true
-        vReplyStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
-        
         if let lastSubview = contentView.subviews.last {
             contentView.bottomAnchor.constraint(equalTo: lastSubview.bottomAnchor, constant: 10).isActive = true
         }
@@ -127,6 +132,7 @@ public class BJCommentCell: UICollectionViewCell {
         view.clipsToBounds = true
         view.backgroundColor = .systemBlue
         view.layer.cornerRadius = profileSize / 2
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -152,6 +158,7 @@ public class BJCommentCell: UICollectionViewCell {
         view.text = "Sovannra Kong"
         view.textColor = usernameTextColor
         view.font = usernameFontSize
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -162,6 +169,7 @@ public class BJCommentCell: UICollectionViewCell {
         view.textColor = captionTextColor
         view.font = captionFontSize
         view.numberOfLines = 0
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -172,15 +180,31 @@ public class BJCommentCell: UICollectionViewCell {
         view.contentMode = .scaleAspectFill
         view.layer.masksToBounds = true
         view.clipsToBounds = true
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .clear
         view.layer.cornerRadius = 14
+        view.isHidden = true
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    lazy var vGifImage: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.contentMode = .scaleAspectFill
+        view.layer.masksToBounds = true
+        view.clipsToBounds = true
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 14
+        view.isHidden = true
+        view.isUserInteractionEnabled = true
         return view
     }()
     
     let vReplyStackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.spacing = 4
+        view.spacing = 6
         view.distribution = .fill
         view.axis = .vertical
         view.contentMode = .left
@@ -223,7 +247,7 @@ extension BJCommentCell {
     
     private func updateView() {
         //User
-        vProfile.image = UIImage(named: data?.user.imageUrl ?? "")
+        vProfile.loadImage(with: data?.user.imageUrl ?? "")
         vUsername.text = data?.user.username
         
         //Caption
@@ -231,15 +255,96 @@ extension BJCommentCell {
         vCaption.isHidden = data?.isHideCaption ?? false
         
         //Image
-        vImage.image = UIImage(named: data?.imageUrl ?? "")
+        vImage.loadImage(with: data?.imageUrl ?? "")
+        vGifImage.loadGif(with: data?.imageUrl ?? "")
+        vGifImage.isHidden = data?.imageEXE == .image
         vImage.isHidden = data?.isHideImage ?? false
-        imageWidthConstraint?.constant = data?.imageWidth ?? 0
-        imageHeightConstraint?.constant = data?.imageHeight ?? 0
+        imageWidthConstraint?.constant = data?.imageWidth(vImage.image) ?? 0
+        imageHeightConstraint?.constant = data?.imageHeight(vImage.image) ?? 0
         
         //Previous reply
         vPreviousReply.isHidden = data?.isHidePreviousReply ?? false
         vPreviousReply.vViewReply.isHidden = data?.isHideReply ?? false
         vPreviousReply.vUsername.text = data?.replyUser.username
-        vPreviousReply.vProfile.image = UIImage(named: data?.replyUser.imageUrl ?? "")
+        vPreviousReply.vViewReply.text = data?.viewPreviousReply
+        vPreviousReply.vCaption.text = data?.replyCaption
+        vPreviousReply.vProfile.loadImage(with: data?.replyUser.imageUrl ?? "")
+    }
+    
+    func setupAction() {
+        //Cell
+        let cellLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        self.addGestureRecognizer(cellLongGesture)
+        
+        //Profile
+        let profileGesture = UITapGestureRecognizer(target: self, action: #selector(hanleProfile))
+        vProfile.addGestureRecognizer(profileGesture)
+        let usernameGesture = UITapGestureRecognizer(target: self, action: #selector(hanleProfile))
+        vUsername.addGestureRecognizer(usernameGesture)
+        
+        //Caption
+        let captionGesture = UITapGestureRecognizer(target: self, action: #selector(handleCaption))
+        vCaption.addGestureRecognizer(captionGesture)
+        
+        //Image
+        let imageGesture = UITapGestureRecognizer(target: self, action: #selector(hanlePreviewImage))
+        vImage.addGestureRecognizer(imageGesture)
+        
+        //Reply
+        let replyGesture = UITapGestureRecognizer(target: self, action: #selector(handleReply))
+        vPreviousReply.addGestureRecognizer(replyGesture)
+        vReply.addTarget(self, action: #selector(handleReply), for: .touchUpInside)
+    }
+    
+    @objc func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            deleate?.didLongPress(data!)
+        }
+    }
+    
+    @objc func hanleProfile() {
+        deleate?.didSelect(.profile, data!)
+    }
+    
+    @objc func handleCaption() {
+        deleate?.didSelect(.caption, data!)
+    }
+    
+    @objc func handleReply() {
+        deleate?.didSelect(.reply, data!)
+    }
+    
+    @objc func hanlePreviewImage() {
+        guard let photo = vImage.image else {return}
+        let statusImageView = vImage
+        statusImageView.alpha = 0
+        
+        if let startingFrame = statusImageView.superview?.convert(statusImageView.frame, to: nil) {
+            let viewController = UIApplication.shared.keyWindow!.rootViewController!
+            viewController.popImageViewer(
+                photos: [photo],
+                outsideFrame: startingFrame,
+                statusImageView: statusImageView,
+                currentIndex: 0,
+                imageViewerDelegate: self
+            )
+        }
+    }
+}
+
+extension BJCommentCell: ImageViewerDelegate{
+
+    public func imageViewer(imageViewerView: ImageViewerView, getCurrentIndex index: Int) {
+       
+    }
+
+    public func imageViewer(imageViewerView: ImageViewerView, graggingView state: ImageViewerView.DraggingState) {
+        switch state {
+        case .ended:
+            let statusImageView = vImage
+            statusImageView.alpha = 1
+        default:
+            break
+        }
     }
 }

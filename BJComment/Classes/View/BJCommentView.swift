@@ -10,7 +10,9 @@ import BJCollection
 
 public class BJCommentView: UIView {
     
-    let data = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "", "Lorem ipsum dolor.", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.", "", "Hello", ""]
+    public var comment: [BJCommentListModel]?
+    
+    public var delegate: BJDelegate?
     
     var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -40,7 +42,7 @@ public class BJCommentView: UIView {
         vCollection.fillSuperview()
     }
     
-    lazy var vCollection: BJCollectionView = {
+    public lazy var vCollection: BJCollectionView = {
         let view = BJCollectionView(frame: .zero, collectionViewLayout: layout)
         view.showScrollIndicator = false
         view.register(cell: BJCommentCell.self)
@@ -52,12 +54,44 @@ public class BJCommentView: UIView {
 
 extension BJCommentView: UICollectionViewDelegate, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return comment?.count ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BJCommentCell = collectionView.dequeue(for: indexPath)
-        cell.caption = data[indexPath.row]
+        guard let data = comment?[indexPath.row] else { return cell }
+        cell.data = BJCommentViewModel(comment: data, indexPath: indexPath)
+        cell.deleate = self
         return cell
+    }
+    
+    public func deleteRow(_ indexPath: IndexPath) {
+        vCollection.performBatchUpdates({
+            vCollection.deleteItems(at: [indexPath])
+        }, completion:nil)
+    }
+    
+//    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        guard let data = comment?[indexPath.row] else { return }
+//        if !data.isLoaded && data.type == .image {
+//            collectionView.reloadItems(at: [indexPath])
+//        }
+//    }
+//
+//    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        guard let data = comment?[indexPath.row] else { return }
+//        if !data.isLoaded && data.imageUrl != "" {
+//            comment?[indexPath.row].isLoaded = true
+//        }
+//    }
+}
+
+extension BJCommentView: BJDelegate {
+    public func didSelect(_ type: BJActionType, _ comment: BJCommentViewModel) {
+        delegate?.didSelect(type, comment)
+    }
+    
+    public func didLongPress(_ comment: BJCommentViewModel) {
+        delegate?.didLongPress(comment)
     }
 }

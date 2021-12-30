@@ -5,11 +5,17 @@
 //  Created by Sovannra on 28/12/21.
 //
 
-import Foundation
+import BJTextView
+import UIKit
 
 public struct BJCommentViewModel {
     
-    var comment: BJCommentModel!
+    public var comment: BJCommentListModel!
+    public var indexPath: IndexPath?
+    
+    public var ownerId: String {
+        return comment.user.id
+    }
     
     var user: BJUser {
         return comment.user
@@ -62,35 +68,42 @@ public struct BJCommentViewModel {
         }
     }
     
-    var image: UIImage {
-        return UIImage(named: comment.imageUrl)!
+    var imageEXE: ImageEXE {
+        guard let url = URL(string: imageUrl) else { return .image}
+        return url.pathExtension == "gif" ? .gif : .image
     }
     
-    var imageHeight: CGFloat {
-        switch aspectRatio {
-        case .squre:
-            return 100
-        case .portraint:
-            let aspect: CGFloat = 4 / 3
-            let height = imageWidth * aspect
-            return height
-        case .landscape:
-            let aspect: CGFloat = 4 / 6
-            let height = imageWidth * aspect
-            return height
-        }
-    }
-    
-    var imageWidth: CGFloat {
-        if comment.type == .image {
-            return (aspectRatio == .landscape) ? (UIScreen.main.bounds.width * 0.85) + 2 : 150
+    private var smallHeight: CGFloat = 150
+        
+    func imageWidth(_ image: UIImage?) -> CGFloat {
+        if aspectRatio(image) == .landscape {
+            return (UIScreen.main.bounds.width * 0.83)
         } else {
-            return 100
+            return smallHeight
         }
     }
     
-    var aspectRatio: ImageAspectRatio {
-        guard let imageSize = image.cgImage else { return .squre}
+    func imageHeight(_ image: UIImage?) -> CGFloat {
+        if imageUrl != "" {
+            switch aspectRatio(image) {
+            case .squre:
+                return smallHeight
+            case .portraint:
+                let aspect: CGFloat = 4 / 3
+                let height = smallHeight * aspect
+                return height
+            case .landscape:
+                let aspect: CGFloat = 4 / 6
+                let height = (UIScreen.main.bounds.width * 0.83) * aspect
+                return height
+            }
+        } else {
+            return 0
+        }
+    }
+
+    func aspectRatio(_ image: UIImage?) -> ImageAspectRatio {
+        guard let imageSize = image?.cgImage else { return .squre}
         if imageSize.width < imageSize.height {
             return .portraint
         } else if imageSize.width > imageSize.height {
@@ -100,8 +113,9 @@ public struct BJCommentViewModel {
         }
     }
     
-    public init(comment: BJCommentModel) {
+    public init(comment: BJCommentListModel, indexPath: IndexPath) {
         self.comment = comment
+        self.indexPath = indexPath
     }
 }
 
@@ -109,4 +123,9 @@ enum ImageAspectRatio {
     case squre
     case portraint
     case landscape
+}
+
+enum ImageEXE {
+    case gif
+    case image
 }

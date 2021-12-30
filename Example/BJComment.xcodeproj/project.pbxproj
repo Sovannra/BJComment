@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		049B8E1A277AA350006DFCCA /* CollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B8E19277AA350006DFCCA /* CollectionController.swift */; };
+		049B8E39277B128E006DFCCA /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B8E38277B128E006DFCCA /* LocalData.swift */; };
 		374FB835407F8E202A7DCA6B /* Pods_BJComment_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5430C17970037ADB61D1E330 /* Pods_BJComment_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		049B8E19277AA350006DFCCA /* CollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionController.swift; sourceTree = "<group>"; };
+		049B8E38277B128E006DFCCA /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		1DFDF6F3AD8E4FCF1ED4E030 /* BJComment.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BJComment.podspec; path = ../BJComment.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		412011D3ED7DE7264BDBD4B2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		42760964EA5F6BB89DB57C61 /* Pods_BJComment_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BJComment_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				049B8E19277AA350006DFCCA /* CollectionController.swift */,
+				049B8E38277B128E006DFCCA /* LocalData.swift */,
 			);
 			name = "Example for BJComment";
 			path = BJComment;
@@ -298,11 +301,27 @@
 				"${PODS_ROOT}/Target Support Files/Pods-BJComment_Example/Pods-BJComment_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BJCollection/BJCollection.framework",
 				"${BUILT_PRODUCTS_DIR}/BJComment/BJComment.framework",
+				"${BUILT_PRODUCTS_DIR}/BJTextView/BJTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework",
+				"${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BJCollection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BJComment.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BJTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKCamera.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKPhotoGallery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -341,6 +360,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				049B8E1A277AA350006DFCCA /* CollectionController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				049B8E39277B128E006DFCCA /* LocalData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

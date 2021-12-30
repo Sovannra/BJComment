@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BJCommentModel{
+public struct BJCommentListModel{
     let id: String
     let user: BJUser
     let caption: String
@@ -15,6 +15,7 @@ public struct BJCommentModel{
     let createdAt: Double
     let type: BJCommentType
     let reply: [BJReplyCommentModel]
+    var isLoaded: Bool
     
     public init(
         id: String,
@@ -23,7 +24,8 @@ public struct BJCommentModel{
         imageUrl: String,
         createdAt: Double,
         type: BJCommentType,
-        reply: [BJReplyCommentModel]
+        reply: [BJReplyCommentModel],
+        isLoaded: Bool?=nil
     ) {
         self.id = id
         self.user = user
@@ -32,6 +34,7 @@ public struct BJCommentModel{
         self.createdAt = createdAt
         self.type = type
         self.reply = reply
+        self.isLoaded = isLoaded ?? false
     }
 }
 
