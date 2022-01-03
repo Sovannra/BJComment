@@ -205,7 +205,7 @@ class ViewController: UIViewController, BJDelegate {
         }
     }
 }
-
+```
 extension ViewController {
     /// Handle click outsize to dismiss keyboard
     @objc func handleTap() {
@@ -244,7 +244,7 @@ extension ViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 }
-
+```
 extension ViewController: BJCommentDelegate {
 
     func sendComment(_ comment: BJCommentModel) {
