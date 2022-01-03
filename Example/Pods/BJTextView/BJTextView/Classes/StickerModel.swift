@@ -5,8 +5,6 @@
 //  Created by Sovannra on 21/12/21.
 //
 
-import UIKit
-
 public enum BJCommentTextType: String, CaseIterable {
     case caption = "caption"
     case image   = "image"
@@ -65,3 +63,4 @@ public struct StickerSubCategoryModel {
         self.isSelected = false
     }
 }
+

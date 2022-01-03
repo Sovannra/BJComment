@@ -3,7 +3,7 @@ PODS:
   - BJComment (0.1.0):
     - BJCollection
     - BJTextView
-  - BJTextView (0.2.0):
+  - BJTextView (0.3.0):
     - BJCollection
     - DKImagePickerController
     - Nuke
@@ -58,9 +58,9 @@ PODS:
     - SDWebImage
     - SwiftyGif
   - Nuke (7.5.2)
-  - SDWebImage (5.12.1):
-    - SDWebImage/Core (= 5.12.1)
-  - SDWebImage/Core (5.12.1)
+  - SDWebImage (5.12.2):
+    - SDWebImage/Core (= 5.12.2)
+  - SDWebImage/Core (5.12.2)
   - SwiftyGif (5.4.2)
 
 DEPENDENCIES:
@@ -85,13 +85,13 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BJCollection: b39c50b7503b4c4b6bbf0dd04ecf2e533ee9d460
   BJComment: cfe1d0ddc58bcc4fb0100a393d96b1ee0d134c9d
-  BJTextView: 61bb0d2d375216bb6447dd41ee0d6a1908351c15
+  BJTextView: 4a7365252349285e37fc2ae38a80b630a832e584
   CropViewController: 7093b39ec3cb508531b22d35773e06cecd7378d8
   DKCamera: a902b66921fca14b7a75266feb8c7568aa7caa71
   DKImagePickerController: b5eb7f7a388e4643264105d648d01f727110fc3d
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
-  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
   SwiftyGif: dec758a9dd3d278e5a855dbf279bf062c923c387
 
 PODFILE CHECKSUM: baeeaec04df12ab3c2161eeed6a25ef03b9635fc

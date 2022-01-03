@@ -20,7 +20,7 @@ public struct BJAppConstant {
     }
     
     public static func containerWidth(_ image: UIImage?) -> CGFloat {
-        return (image?.cgImage?.height ?? 0) < (image?.cgImage?.width ?? 0) ? 100 : 70
+        return (image?.cgImage?.height ?? 0) < (image?.cgImage?.width ?? 0) ? 150 : 100
     }
     
     public static func loadImageResourcePath(_ fileName: String) -> UIImage? {

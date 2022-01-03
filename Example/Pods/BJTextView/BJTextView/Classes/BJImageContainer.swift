@@ -20,7 +20,7 @@ public class BJImageContainer: UIView {
         }
     }
     
-    public var containerSize: CGFloat = 70
+    public var containerSize: CGFloat = 100
     public let iconSize: CGFloat = 20
     public var iconName: String = "" {
         didSet {

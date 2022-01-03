@@ -13,17 +13,11 @@ extension UIImageView {
     /** Load image from url */
     public func loadImage(with url: String, placeholder: String?="", completion: ImageTask.Completion? = nil) {
         let options = ImageLoadingOptions(
-//            placeholder: UIImage(named: placeholder ?? ""),
+            placeholder: UIImage(named: placeholder ?? ""),
             transition: .fadeIn(duration: 0.33)
         )
         if let url = URL(string: url) {
             Nuke.loadImage(with: url, options: options, into: self, completion: completion)
-        }
-    }
-    
-    public func loadGif(with url: String) {
-        if let url = URL(string: url) {
-            self.setGifFromURL(url)
         }
     }
     
