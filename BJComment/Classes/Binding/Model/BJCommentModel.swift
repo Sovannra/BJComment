@@ -8,40 +8,43 @@
 import Foundation
 
 public struct BJCommentListModel{
-    let id: String
-    let user: BJUser
-    let caption: String
-    let imageUrl: String
-    let createdAt: Double
-    let type: BJCommentType
-    let reply: [BJReplyCommentModel]
-    var isLoaded: Bool
+    public let id: String
+    public let user: BJUser
+    public let caption: String
+    public var imageUrl: String
+    public let stickerId: String
+    public let createdAt: Double
+    public let type: BJCommentType
+    public let reply: [BJReplyCommentModel]
+    public let aspectRatioType: ImageAspectRatio
     
     public init(
         id: String,
         user: BJUser,
         caption: String,
         imageUrl: String,
+        stickerId: String,
         createdAt: Double,
         type: BJCommentType,
         reply: [BJReplyCommentModel],
-        isLoaded: Bool?=nil
+        aspectRatioType: ImageAspectRatio?=nil
     ) {
         self.id = id
         self.user = user
         self.caption = caption
         self.imageUrl = imageUrl
+        self.stickerId = stickerId
         self.createdAt = createdAt
         self.type = type
         self.reply = reply
-        self.isLoaded = isLoaded ?? false
+        self.aspectRatioType = aspectRatioType ?? .none
     }
 }
 
 public struct BJUser {
-    let id: String
-    let username: String
-    let imageUrl: String
+    public let id: String
+    public let username: String
+    public let imageUrl: String
     
     public init (
         id: String,
@@ -55,18 +58,20 @@ public struct BJUser {
 }
 
 public struct BJReplyCommentModel {
-    let id: String
-    let user: BJUser
-    let caption: String
-    let imageUrl: String
-    let createdAt: Double
-    let type: BJCommentType
+    public let id: String
+    public let user: BJUser
+    public let caption: String
+    public let imageUrl: String
+    public let stickerId: String
+    public let createdAt: Double
+    public let type: BJCommentType
     
     public init(
         id: String,
         user: BJUser,
         caption: String,
         imageUrl: String,
+        stickerId: String,
         createdAt: Double,
         type: BJCommentType
     ) {
@@ -74,13 +79,14 @@ public struct BJReplyCommentModel {
         self.user = user
         self.caption = caption
         self.imageUrl = imageUrl
+        self.stickerId = stickerId
         self.createdAt = createdAt
         self.type = type
     }
 }
 
-public enum BJCommentType {
-    case caption
-    case image
-    case sticker
+public enum BJCommentType: String, CaseIterable {
+    case caption = "caption"
+    case image   = "image"
+    case sticker = "sticker"
 }

@@ -61,7 +61,7 @@ extension Alert {
         }
         
         var alertAction: UIAlertAction {
-            return UIAlertAction(title: title, style: .default, handler: { _ in
+            return UIAlertAction(title: title, style: title == "Delete" ? .destructive : .default, handler: { _ in
                 if let handler = self.handler {
                     handler()
                 }

@@ -1,18 +1,15 @@
 //
-//  BJCommentView.swift
+//  BJTableView.swift
 //  BJComment
 //
-//  Created by Sovannra on 27/12/21.
+//  Created by Sovannra on 3/1/22.
 //
 
 import UIKit
 
-public class BJCommentView: UIView {
+public class BJTableView: UIView {
     
     public var comment: [BJCommentListModel]?
-    
-    /// Store reply data when update comment
-    public var reply: [BJReplyCommentModel] = []
     
     public var delegate: BJDelegate?
     
@@ -32,16 +29,12 @@ public class BJCommentView: UIView {
     }
     
     private func setupConstraint() {
-        vTableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        vTableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        vTableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        vTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        vTableView.fillSuperview()
     }
     
     public lazy var vTableView: UITableView = {
         let view = UITableView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(BJCommentCell.self, forCellReuseIdentifier: "cellId")
+        view.register(BJTableCell.self, forCellReuseIdentifier: "cellId")
         view.estimatedRowHeight = 999
         view.backgroundColor = .clear
         view.separatorStyle = .none
@@ -52,13 +45,13 @@ public class BJCommentView: UIView {
     }()
 }
 
-extension BJCommentView: UITableViewDataSource, UITableViewDelegate {
+extension BJTableView: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comment?.count ?? 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! BJCommentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! BJTableCell
         guard let data = comment?[indexPath.row] else { return cell }
         let viewModel = BJCommentViewModel(comment: data, indexPath: indexPath)
         cell.data = viewModel
@@ -101,7 +94,7 @@ extension BJCommentView: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension BJCommentView: BJDelegate {
+extension BJTableView: BJDelegate {
     public func didSelect(_ type: BJActionType, _ comment: BJCommentViewModel) {
         delegate?.didSelect(type, comment)
     }

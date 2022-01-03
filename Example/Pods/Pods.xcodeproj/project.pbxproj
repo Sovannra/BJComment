@@ -10,6 +10,7 @@
 		00D35216E44222A0D8FEA988844BDB84 /* SDImageCachesManagerOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AFEDFC46BB30344CBBAC9657B807D288 /* SDImageCachesManagerOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		02C9685EC0679B90460ACD74888F7462 /* SDImageGIFCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C75BF474718CAB497D224485DBBB965 /* SDImageGIFCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		035A085EA7EE5A30D681832B201F0950 /* SDWebImageCacheKeyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = F08C7BB649C830C605B3228419540DD1 /* SDWebImageCacheKeyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04A3E8072782DE2F009A104B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3E8062782DE2F009A104B /* Date+Extension.swift */; };
 		04BE9BB1277D576A00ABE4DA /* BJAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE9BAF277D55AA00ABE4DA /* BJAlert.swift */; };
 		04BE9BB2277D57D100ABE4DA /* BJProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D1828B277C59E30043F908 /* BJProtocol.swift */; };
 		04C8ABDA73BCAF4306CBDBE51079DD05 /* DKImageExtensionPhotoCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A1CD1ECFAF495C63C5019A30F023C /* DKImageExtensionPhotoCropper.swift */; };
@@ -21,6 +22,7 @@
 		04D182A0277C6BBA0043F908 /* ImageViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D18298277C6BBA0043F908 /* ImageViewerView.swift */; };
 		04D182A1277C6BBA0043F908 /* MediaPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D18299277C6BBA0043F908 /* MediaPageView.swift */; };
 		04D182A2277C6BBA0043F908 /* DragGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D1829A277C6BBA0043F908 /* DragGestureHandler.swift */; };
+		04DD5CB3277DA73400D6FA83 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD5CB2277DA73400D6FA83 /* UIScrollView+Extension.swift */; };
 		05312B4AFD2B515B72D3A921F63F8E5D /* UIColor+SDHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2965AF70A18D74DDE91A7D5C09B8DF6F /* UIColor+SDHexString.m */; };
 		056FD4EDE101265A57D8FF04FF0AA92C /* SDAnimatedImagePlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 91E6D05780B5B8D1B57D1A379F8C7B83 /* SDAnimatedImagePlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06307F7C8D51CAA569EBDE22FBC30E6C /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 727AB43EB1D72D3E646C00B8FD206A8A /* ja.lproj */; };
@@ -567,6 +569,7 @@
 		0296B0E72D1568C2B23C9828F6505D5B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		029E5DF57AF1B2385792D8816DD34438 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/Core/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
 		03E7ADB7EA0BF20D667B8FB5DFB271D1 /* BJCollection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BJCollection-prefix.pch"; sourceTree = "<group>"; };
+		04A3E8062782DE2F009A104B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		04BE9BAF277D55AA00ABE4DA /* BJAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BJAlert.swift; sourceTree = "<group>"; };
 		04D1828B277C59E30043F908 /* BJProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BJProtocol.swift; sourceTree = "<group>"; };
 		04D18291277C6BBA0043F908 /* ZoomTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomTransitionController.swift; sourceTree = "<group>"; };
@@ -577,6 +580,7 @@
 		04D18298277C6BBA0043F908 /* ImageViewerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerView.swift; sourceTree = "<group>"; };
 		04D18299277C6BBA0043F908 /* MediaPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPageView.swift; sourceTree = "<group>"; };
 		04D1829A277C6BBA0043F908 /* DragGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragGestureHandler.swift; sourceTree = "<group>"; };
+		04DD5CB2277DA73400D6FA83 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		05030D210AF368CF98BF845CD777DE3C /* BJCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BJCollection.release.xcconfig; sourceTree = "<group>"; };
 		05719CCCE85BA79FF301A904D4A5F6AB /* SDWebImageCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCompat.h; path = SDWebImage/Core/SDWebImageCompat.h; sourceTree = "<group>"; };
 		05A311A2EDEC889C843ED4AFAD3DF04C /* BJCustomGroupDetailImageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BJCustomGroupDetailImageCell.swift; path = BJTextView/Classes/BJCustomGroupDetailImageCell.swift; sourceTree = "<group>"; };
@@ -1262,6 +1266,8 @@
 				3BD67FD5A51CA11EFEBDC020DDA4AECC /* BJCommentView.swift */,
 				503A30018DCC4784508AC443E2406900 /* BJPreviousReplyView.swift */,
 				0FA4E9A1960C980C1010419841F8A7C4 /* BJUILable.swift */,
+				04DD5CB2277DA73400D6FA83 /* UIScrollView+Extension.swift */,
+				04A3E8062782DE2F009A104B /* Date+Extension.swift */,
 			);
 			name = View;
 			path = BJComment/Classes/View;
@@ -2837,9 +2843,11 @@
 				04D182A0277C6BBA0043F908 /* ImageViewerView.swift in Sources */,
 				EBA0FC8656566D2A40AFB27550A2561A /* BJCommentView.swift in Sources */,
 				13BFAC99BB75CC7BCA934B0190963400 /* BJPreviousReplyView.swift in Sources */,
+				04A3E8072782DE2F009A104B /* Date+Extension.swift in Sources */,
 				04D1829F277C6BBA0043F908 /* ImageViewerPagerVC.swift in Sources */,
 				04D182A1277C6BBA0043F908 /* MediaPageView.swift in Sources */,
 				04BE9BB1277D576A00ABE4DA /* BJAlert.swift in Sources */,
+				04DD5CB3277DA73400D6FA83 /* UIScrollView+Extension.swift in Sources */,
 				04D1829B277C6BBA0043F908 /* ZoomTransitionController.swift in Sources */,
 				83A1ED7006E65FFE214687EBBD8E2B1D /* BJUILable.swift in Sources */,
 				6061B3F671EF8880D2294E75CAD31B47 /* BJViewModel.swift in Sources */,

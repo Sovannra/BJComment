@@ -17,3 +17,12 @@ public enum BJActionType {
     case caption
     case reply
 }
+
+public class BJLongGesture: UILongPressGestureRecognizer {
+    var type: BJLongGestureType = .caption
+}
+
+public enum BJLongGestureType {
+    case caption
+    case image
+}

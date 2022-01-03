@@ -13,21 +13,41 @@ public struct BJCommentViewModel {
     public var comment: BJCommentListModel!
     public var indexPath: IndexPath?
     
+    public var commentId: String {
+        return comment.id
+    }
+    
     public var ownerId: String {
         return comment.user.id
     }
     
-    var user: BJUser {
+    public var commentType: String {
+        return comment.type.rawValue
+    }
+    
+    public var createdAt: Double {
+        return comment.createdAt
+    }
+    
+    public var stickerId: String {
+        return ""
+    }
+    
+    public var imageView: UIImage?
+    
+    public var user: BJUser {
         return comment.user
     }
     
-    var caption: String {
+    public var caption: String {
         return comment.caption
     }
     
-    var imageUrl: String {
+    public var imageUrl: String {
         return comment.imageUrl
     }
+    
+    public var longGestureType: BJLongGestureType = .caption
     
     var isHideCaption: Bool {
         return comment.caption == ""
@@ -50,7 +70,12 @@ public struct BJCommentViewModel {
         return comment.reply.count == 1
     }
     
-    var replyUser: BJUser {
+    var timeAgo: String {
+        let date = comment.createdAt.getDateFromUTC()
+        return date.getElapsedInterval()
+    }
+    
+    public var replyUser: BJUser {
         let option = BJUser(id: "", username: "", imageUrl: "")
         guard let reply = comment.reply.last else { return option }
         return reply.user
@@ -76,16 +101,20 @@ public struct BJCommentViewModel {
     private var smallHeight: CGFloat = 150
         
     func imageWidth(_ image: UIImage?) -> CGFloat {
-        if aspectRatio(image) == .landscape {
-            return (UIScreen.main.bounds.width * 0.83)
+        if imageUrl != "" {
+            if comment.aspectRatioType == .landscape {
+                return (UIScreen.main.bounds.width * 0.83)
+            } else {
+                return smallHeight
+            }
         } else {
-            return smallHeight
+            return 0
         }
     }
     
     func imageHeight(_ image: UIImage?) -> CGFloat {
         if imageUrl != "" {
-            switch aspectRatio(image) {
+            switch comment.aspectRatioType {
             case .squre:
                 return smallHeight
             case .portraint:
@@ -96,33 +125,28 @@ public struct BJCommentViewModel {
                 let aspect: CGFloat = 4 / 6
                 let height = (UIScreen.main.bounds.width * 0.83) * aspect
                 return height
+            case .none:
+                return 0
             }
         } else {
             return 0
-        }
-    }
-
-    func aspectRatio(_ image: UIImage?) -> ImageAspectRatio {
-        guard let imageSize = image?.cgImage else { return .squre}
-        if imageSize.width < imageSize.height {
-            return .portraint
-        } else if imageSize.width > imageSize.height {
-            return .landscape
-        } else {
-            return .squre
         }
     }
     
     public init(comment: BJCommentListModel, indexPath: IndexPath) {
         self.comment = comment
         self.indexPath = indexPath
+        let img = UIImageView()
+        img.loadImage(with: comment.imageUrl)
+        self.imageView = img.image
     }
 }
 
-enum ImageAspectRatio {
+public enum ImageAspectRatio {
     case squre
     case portraint
     case landscape
+    case none
 }
 
 enum ImageEXE {

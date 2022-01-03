@@ -1,13 +1,13 @@
 //
-//  BJCommentCell.swift
+//  BJTableCell.swift
 //  BJComment
 //
-//  Created by Sovannra on 27/12/21.
+//  Created by Sovannra on 3/1/22.
 //
 
 import UIKit
 
-public class BJCommentCell: UITableViewCell {
+public class BJTableCell: UITableViewCell {
         
     var data: BJCommentViewModel? {
         didSet {
@@ -229,7 +229,7 @@ public class BJCommentCell: UITableViewCell {
     }()
 }
 
-extension BJCommentCell {
+extension BJTableCell {
     
     private func updateView() {
         //User
@@ -328,7 +328,7 @@ extension BJCommentCell {
     }
 }
 
-extension BJCommentCell: ImageViewerDelegate{
+extension BJTableCell: ImageViewerDelegate{
 
     public func imageViewer(imageViewerView: ImageViewerView, getCurrentIndex index: Int) {
        
@@ -344,4 +344,3 @@ extension BJCommentCell: ImageViewerDelegate{
         }
     }
 }
-

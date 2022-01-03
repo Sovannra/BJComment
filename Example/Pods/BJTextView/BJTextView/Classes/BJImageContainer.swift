@@ -20,7 +20,7 @@ public class BJImageContainer: UIView {
         }
     }
     
-    public var containerSize: CGFloat = 100
+    public var containerSize: CGFloat = 70
     public let iconSize: CGFloat = 20
     public var iconName: String = "" {
         didSet {
@@ -56,7 +56,7 @@ public class BJImageContainer: UIView {
         vImageHeight?.constant = BJAppConstant.calculateAspect(containerSize, image: image)
     }
     
-    fileprivate func removeImage() {
+    func removeImage() {
         vImageTop?.constant = 0
         vImageWidth?.constant = 0
         vImageHeight?.constant = 0

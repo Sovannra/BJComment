@@ -164,7 +164,7 @@ class MyCell: UICollectionViewCell {
         vTime.topAnchor.constraint(equalTo: vImage.bottomAnchor, constant: 10).isActive = true
         vTime.leftAnchor.constraint(equalTo: vStackView.leftAnchor).isActive = true
         
-        vReply
+        //vReply
         contentView.addSubview(vReply)
         vReply.leftAnchor.constraint(equalTo: vTime.rightAnchor, constant: 10).isActive = true
         vReply.centerYAnchor.constraint(equalTo: vTime.centerYAnchor).isActive = true
